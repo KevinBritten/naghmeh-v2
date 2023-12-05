@@ -11,38 +11,22 @@
     </div>
 
     <!-- Navigation links centered -->
-    <nav class="flex justify-center space-x-6">
-      <nuxt-link to="/" class="text-gray-800 hover:text-blue-500"
-        >HOME</nuxt-link
+    <nav class="flex justify-center">
+      <nuxt-link
+        :to="`/${pageName.toLowerCase()}`"
+        v-for="pageName in pageNames"
+        :key="pageName"
+        class="text-xl mx-4 text-white hover:text-gray-800"
       >
-      <nuxt-link to="/about" class="text-gray-800 hover:text-blue-500"
-        >ABOUT</nuxt-link
-      >
-      <nuxt-link to="/music" class="text-gray-800 hover:text-blue-500"
-        >MUSIC</nuxt-link
-      >
-      <nuxt-link to="/store" class="text-gray-800 hover:text-blue-500"
-        >STORE</nuxt-link
-      >
-      <nuxt-link to="/videos" class="text-gray-800 hover:text-blue-500"
-        >VIDEOS</nuxt-link
-      >
-      <nuxt-link to="/photos" class="text-gray-800 hover:text-blue-500"
-        >PHOTOS</nuxt-link
-      >
-      <nuxt-link to="/contact" class="text-gray-800 hover:text-blue-500"
-        >CONTACT</nuxt-link
-      >
-      <nuxt-link to="/shows" class="text-gray-800 hover:text-blue-500"
-        >SHOWS</nuxt-link
-      >
-      <nuxt-link to="/press" class="text-gray-800 hover:text-blue-500"
-        >PRESS</nuxt-link
-      >
+        {{ pageName.toUpperCase() }}
+      </nuxt-link>
     </nav>
 
     <!-- Language button on the right -->
-    <button class="text-gray-800 hover:text-blue-500" @click="switchLanguage">
+    <button
+      class="text-lg text-white hover:text-gray-800"
+      @click="switchLanguage"
+    >
       FR
     </button>
   </header>
@@ -50,6 +34,21 @@
 
 <script>
 export default {
+  data() {
+    return {
+      pageNames: [
+        "Home",
+        "About",
+        "Music",
+        "Store",
+        "Videos",
+        "Photos",
+        "Contact",
+        "Shows",
+        "Press",
+      ],
+    };
+  },
   methods: {
     switchLanguage() {
       // Add your language switching logic here
